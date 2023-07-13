@@ -1,6 +1,8 @@
 import pygame
+import json
 
-class Auxiliar:
+
+class Auxiliar():
     @staticmethod
     def getSurfaceFromSpriteSheet(path, columnas, filas, flip=False, step=1, scale=1, w=0, h=0):
         lista = []
@@ -42,3 +44,29 @@ class Auxiliar:
             for i in range(repeat_frame):
                 lista.append(surface_fotograma)
         return lista
+    
+
+    def generar_musica(path: str, volumen: float):
+        '''
+        Función que se encarga de       generar una música de fondo para mi juego
+        Recibe el path donde se ubique mi música y el volumen de la misma
+        '''
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load(path)
+        pygame.mixer.music.play(5)
+        pygame.mixer.music.set_volume(volumen)
+
+    def leer_archivo(path: str):
+        '''
+        Esta función lee un archivo json y lo devuelve como una lista.
+        ------------
+        Parametro:
+        path: tipo string -> es la ruta en donde se encuentra el archivo JSON a leer.
+        ------------
+        Retorna: 
+        lista_jugadores: tipo list[dict] -> una lista que posee el contenido del archivo JSON.
+        '''
+        with open(path, 'r') as archivo:
+            diccionario = json.load(archivo)
+            lista_niveles = diccionario["niveles"]
+        return lista_niveles

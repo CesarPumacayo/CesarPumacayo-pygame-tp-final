@@ -20,20 +20,23 @@ class Player:
         self.score = 0
         self.move_x = 0
         self.move_y = 0
-        self.speed_walk =  speed_walk
-        self.speed_run =  speed_run
+        self.speed_walk = speed_walk
+        self.speed_run = speed_run
         self.gravity = gravity
         self.jump_power = jump_power
         self.animation = self.stay_r
         self.direction = DIRECTION_R
-        self.image = self.animation[self.frame]
-        self.rect = self.image.get_rect()
+        self.is_shoot = False  # No se utiliza en el código proporcionado, se puede eliminar
+
+        self.imagen = self.animation[self.frame]
+        self.rect = self.imagen.get_rect()
         self.rect.x = x
         self.rect.y = y
         self.collition_rect = pygame.Rect(x+self.rect.width/3,y,self.rect.width/3,self.rect.height)
         self.ground_collition_rect = pygame.Rect(self.collition_rect)
         self.ground_collition_rect.height = GROUND_COLLIDE_H
         self.ground_collition_rect.y = y + self.rect.height - GROUND_COLLIDE_H
+
 
         self.is_jump = False
         self.is_fall = False
@@ -52,8 +55,34 @@ class Player:
         self.tiempo_last_jump = 0 # en base al tiempo transcurrido general
         self.interval_time_jump = interval_time_jump
 
+        #-----------
+        self.tiempo_objetivo = 500
+        #-----------
+        
+        self.tiempo_inicial = pygame.time.get_ticks()
+
         self.collided_enemies = []  # Lista para almacenar los enemigos con los que ha colisionado
 
+
+    def timer(self, tiempo_obj):
+            if self.atk_stance_flag == False:
+                self.tiempo_trans = pygame.time.get_ticks()
+                self.atk_stance_flag = True
+            tiempo_actual = pygame.time.get_ticks()
+            if tiempo_actual - self.tiempo_trans >= tiempo_obj:
+                return True
+            else:
+                return False
+            
+
+    def calculate_delta_time(self,tiempo_objetivo):
+        tiempo_actual = pygame.time.get_ticks()
+        tiempo_transcurrido = tiempo_actual - self.tiempo_inicial
+        if tiempo_transcurrido >= tiempo_objetivo:
+            return True
+        else:
+            return False
+        
     def walk(self,direction):
         if(self.is_jump == False and self.is_fall == False):
             if(self.direction != direction or (self.animation != self.walk_r and self.animation != self.walk_l)):
@@ -82,11 +111,19 @@ class Player:
        self.lives -= 1
 
 
-    def jump(self, on_off=True):
-        if on_off and self.is_jump == False:
+    def jump(self,platform_list, on_off=True):
+        if on_off and self.is_jump == False and self.is_fall == False:
             self.y_start_jump = self.rect.y
-            self.move_y = -self.jump_power
-            self.animation = self.jump_r if self.direction == DIRECTION_R else self.jump_l
+
+
+            if(self.direction == DIRECTION_R):
+                self.move_x = int(self.move_x / 1.5)
+                self.move_y = -self.jump_power
+                self.animation = self.jump_r
+            else:
+                self.move_x = int(self.move_x / 1.5)
+                self.move_y = -self.jump_power
+                self.animation = self.jump_l
             self.frame = 0
             self.is_jump = True
         if not on_off:
@@ -152,7 +189,7 @@ class Player:
                     self.change_y(self.gravity)
             else:
                 if self.is_jump:
-                    self.jump(False)
+                    self.jump(plataform_list, False)
                 self.is_fall = False     
 
     def is_on_plataform(self,plataform_list):
@@ -168,6 +205,8 @@ class Player:
         return retorno                 
     
 
+    
+
     def do_animation(self,delta_ms):
         self.tiempo_transcurrido_animation += delta_ms
         if(self.tiempo_transcurrido_animation >= self.frame_rate_ms):
@@ -179,6 +218,7 @@ class Player:
                 self.frame = 0
  
     def update(self,delta_ms,plataform_list):
+        
         self.do_movement(delta_ms,plataform_list)
         self.do_animation(delta_ms)
         if self.immune:
@@ -194,8 +234,13 @@ class Player:
             pygame.draw.rect(screen,color=(255,0 ,0),rect=self.collition_rect)
             pygame.draw.rect(screen,color=(255,255,0),rect=self.ground_collition_rect)
         
-        self.image = self.animation[self.frame]
-        screen.blit(self.image,self.rect)
+        # self.image = self.animation[self.frame]
+        # screen.blit(self.image,self.rect)
+        try:
+            self.imagen = self.animation[self.frame]
+        except IndexError:
+            print("IndexError")
+        screen.blit(self.imagen, self.rect)
         
 
     def events(self, delta_ms, keys):
@@ -225,9 +270,23 @@ class Player:
             else:
                 sentido = -1
 
-            self.bullet_list.append(Bullet(self, self.rect.centerx, self.rect.centery, sentido * self.rect.centerx, self.rect.centery, speed=20 , path ="images\gui\set_gui_01\Comic_Border\Bars\Bar_Segment05.png", frame_rate_ms=6000, move_rate_ms=20, width=5, height=5))
+            self.bullet_list.append(Bullet(self, self.rect.centerx, self.rect.centery, sentido * self.rect.centerx, self.rect.centery, speed=10 , path ="images\gui\set_gui_01\Comic_Border\Bars\Bar_Segment05.png", frame_rate_ms=6000, move_rate_ms=20, width=5, height=5))
         
         if not keys[pygame.K_s]:
             self.is_shooting = False
 
+    #NUEVO!
+    def colllide_enemy(self, enemy_list):
+        collision_detected = False  # Bandera para indicar si se detectó una colisión con algún enemigo   
+        for enemy in enemy_list:
+            if self.rect.colliderect(enemy.rect):
+                collision_detected = True
+                break  # Si hay una colisión, no es necesario verificar los otros enemigos
+        if collision_detected:
+            if not self.colliding_enemy_flag:  # Verifica si ya estás colisionando con un enemigo
+                self.be_hurted()
+                self.discount_live()
+                self.colliding_enemy_flag = True  # Establece la bandera para indicar que estás colisionando con un enemigo
+        else:
+            self.colliding_enemy_flag = False
 

@@ -1,11 +1,14 @@
+
 import pygame
 from pygame.locals import *
 from gui_widget import Widget
 from gui_button import Button
+from constantes import *
+import sys
 
 class Form():
     forms_dict = {}
-    def __init__(self,name,master_surface,x,y,w,h,color_background,color_border,active):
+    def __init__(self,name,master_surface,x,y,w,h,color_background,imagen_background,color_border,active):
         self.forms_dict[name] = self
         self.master_surface = master_surface
         self.x = x
@@ -15,6 +18,7 @@ class Form():
         self.color_background = color_background
         self.color_border = color_border
 
+        self.imagen_background = imagen_background
         self.surface = pygame.Surface((w,h))
         self.slave_rect = self.surface.get_rect()
         self.slave_rect.x = x
@@ -23,7 +27,11 @@ class Form():
         self.x = x
         self.y = y
 
-        if(self.color_background != None):
+        if self.imagen_background != None:
+            self.imagen_background = pygame.image.load(imagen_background)
+            self.imagen_background = pygame.transform.scale(self.imagen_background,(self.w,self.h)).convert_alpha()
+            self.surface = self.imagen_background
+        elif(self.color_background != None):
             self.surface.fill(self.color_background)
             
     @staticmethod
@@ -47,7 +55,6 @@ class Form():
 
     def draw(self):
         self.master_surface.blit(self.surface,self.slave_rect)
-
 
 class FormMenu(Form):
     def __init__(self,master_surface,x,y,w,h,color_background,color_border,active):

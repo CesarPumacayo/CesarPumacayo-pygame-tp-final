@@ -1,0 +1,638 @@
+{
+    "niveles": [
+        {
+            "id": 1,
+            "player": {
+                "x": 0,
+                "y": 200,
+                "speed_walk": 8,
+                "speed_run": 20,
+                "gravity": 10,
+                "jump_power": 20,
+                "frame_rate_ms": 50,
+                "move_rate_ms": 50,
+                "jump_height": 150,
+                "p_scale":0.2,
+                "interval_time_jump": 300
+            },
+            "platforms": [
+                {
+                    "x": 350,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                },
+                {
+                    "x": 400,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                },
+                {
+                    "x": 500,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                },
+                {
+                    "x": 650,
+                    "y": 530,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                },
+                {
+                    "x": 800,
+                    "y": 460,
+                    "height": 50,
+                    "width": 200,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                },
+                {
+                    "x": 1300,
+                    "y": 460,
+                    "height": 50,
+                    "width": 50,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                }
+
+
+            ],
+            "enemies": [
+                {
+                    "x": 870,
+                    "y": 320,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale":0.08,
+                    "interval_time_jump": 300
+                },
+                {
+                    "x": 470,
+                    "y": 470,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale":0.08,
+                    "interval_time_jump": 300
+                },
+                {
+                    "x": 630,
+                    "y": 620,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale":0.08,
+                    "interval_time_jump": 300
+                }
+
+            ],
+            "enemies_distance": [
+                {
+                    "x": 1300,
+                    "y": 407,
+                    "gravity":8,
+                    "frame_rate_ms":300,
+                    "move_rate_ms":80,
+                    "p_scale":0.08
+                }                  
+            ],
+            "fruit": [
+                {
+                    "x": 950,
+                    "y": 665,
+                    "frame_rate_ms":100,
+                    "move_rate_ms": 50,
+                    "p_scale":1
+                    
+                },
+                {
+                    "x": 850,
+                    "y": 690,
+                    "frame_rate_ms":100,
+                    "move_rate_ms": 50,
+                    "p_scale":1
+                }
+            ],
+            "trampa":[
+                {
+                    "x":1200, 
+                    "y":690, 
+                    "width":50, 
+                    "height":50
+                }
+            ]
+
+
+        },
+        {
+            "id": 2,
+            "player": {
+                "x": 0,
+                "y": 200,
+                "speed_walk": 8,
+                "speed_run": 20,
+                "gravity": 10,
+                "jump_power": 20,
+                "frame_rate_ms": 50,
+                "move_rate_ms": 50,
+                "jump_height": 150,
+                "p_scale": 0.2,
+                "interval_time_jump": 300
+            },
+            "platforms": [
+                {
+                    "x": 350,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 400,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 500,
+                    "y": 600,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 650,
+                    "y": 530,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 800,
+                    "y": 460,
+                    "height": 50,
+                    "width": 200,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 1300,
+                    "y": 460,
+                    "height": 50,
+                    "width": 50,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 1300,
+                    "y": 260,
+                    "height": 50,
+                    "width": 50,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 1300,
+                    "y": 690,
+                    "height": 50,
+                    "width": 50,
+                    "image": "images\\0.png",
+                    "column": 0
+                },
+                {
+                    "x": 650,
+                    "y": 360,
+                    "height": 50,
+                    "width": 100,
+                    "image": "images\\tileset\\forest\\Tiles\\2.png",
+                    "column": 0
+                }
+            ],
+            "enemies": [
+                {
+                    "x": 870,
+                    "y": 320,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale": 0.08,
+                    "interval_time_jump": 300
+                },
+                {
+                    "x": 470,
+                    "y": 470,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale": 0.08,
+                    "interval_time_jump": 300
+                },
+                {
+                    "x": 630,
+                    "y": 690,
+                    "speed_walk": 4,
+                    "gravity": 8,
+                    "frame_rate_ms": 80,
+                    "move_rate_ms": 80,
+                    "p_scale": 0.08,
+                    "interval_time_jump": 300
+                }
+            ],
+            "enemies_distance": [
+                {
+                    "x": 1300,
+                    "y": 407,
+                    "gravity": 8,
+                    "frame_rate_ms": 300,
+                    "move_rate_ms": 80,
+                    "p_scale": 0.08
+                },
+                {
+                    "x": 1300,
+                    "y": 207,
+                    "gravity": 8,
+                    "frame_rate_ms": 300,
+                    "move_rate_ms": 80,
+                    "p_scale": 2
+                },
+                {
+                    "x": 1300,
+                    "y": 640,
+                    "gravity": 8,
+                    "frame_rate_ms": 300,
+                    "move_rate_ms": 80,
+                    "p_scale": 2
+                }
+            ],
+            "fruit": [
+                {
+                    "x": 630,
+                    "y": 510,
+                    "frame_rate_ms": 100,
+                    "move_rate_ms": 50,
+                    "p_scale": 1
+                },
+                {
+                    "x": 665,
+                    "y": 510,
+                    "frame_rate_ms": 100,
+                    "move_rate_ms": 50,
+                    "p_scale": 1
+                },
+                {
+                    "x": 695,
+                    "y": 510,
+                    "frame_rate_ms": 100,
+                    "move_rate_ms": 50,
+                    "p_scale": 1
+                }
+            ],
+            "trampa": [
+                {
+                    "x": 900,
+                    "y": 690,
+                    "width": 50,
+                    "height": 50
+                },
+                {
+                    "x": 950,
+                    "y": 690,
+                    "width": 50,
+                    "height": 50
+                },
+                {
+                    "x": 1000,
+                    "y": 690,
+                    "width": 50,
+                    "height": 50
+                },
+                {
+                    "x": 1050,
+                    "y": 690,
+                    "width": 50,
+                    "height": 50
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "player": {
+              "x": 0,
+              "y": 200,
+              "speed_walk": 8,
+              "speed_run": 20,
+              "gravity": 10,
+              "jump_power": 20,
+              "frame_rate_ms": 50,
+              "move_rate_ms": 50,
+              "jump_height": 150,
+              "p_scale": 0.2,
+              "interval_time_jump": 300
+            },
+            "platforms": [
+              {
+                "x": 350,
+                "y": 600,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 400,
+                "y": 600,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 500,
+                "y": 600,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 650,
+                "y": 530,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 800,
+                "y": 460,
+                "height": 50,
+                "width": 200,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1300,
+                "y": 460,
+                "height": 50,
+                "width": 50,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1300,
+                "y": 260,
+                "height": 50,
+                "width": 50,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1300,
+                "y": 690,
+                "height": 50,
+                "width": 50,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 650,
+                "y": 360,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 900,
+                "y": 300,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1100,
+                "y": 300,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1200,
+                "y": 300,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              },
+              {
+                "x": 1000,
+                "y": 200,
+                "height": 50,
+                "width": 100,
+                "image": "images\\tileset\\forest\\Tiles\\17.png",
+                "column": 0
+              }
+            ],
+            "enemies": [
+              {
+                "x": 870,
+                "y": 320,
+                "speed_walk": 4,
+                "gravity": 8,
+                "frame_rate_ms": 80,
+                "move_rate_ms": 80,
+                "p_scale": 0.08,
+                "interval_time_jump": 300
+              },
+              {
+                "x": 470,
+                "y": 470,
+                "speed_walk": 4,
+                "gravity": 8,
+                "frame_rate_ms": 80,
+                "move_rate_ms": 80,
+                "p_scale": 0.08,
+                "interval_time_jump": 300
+              },
+              {
+                "x": 630,
+                "y": 690,
+                "speed_walk": 4,
+                "gravity": 8,
+                "frame_rate_ms": 80,
+                "move_rate_ms": 80,
+                "p_scale": 0.08,
+                "interval_time_jump": 300
+              },
+              {
+                "x": 900,
+                "y": 400,
+                "speed_walk": 4,
+                "gravity": 8,
+                "frame_rate_ms": 80,
+                "move_rate_ms": 80,
+                "p_scale": 0.08,
+                "interval_time_jump": 300
+              },
+              {
+                "x": 1100,
+                "y": 400,
+                "speed_walk": 4,
+                "gravity": 8,
+                "frame_rate_ms": 80,
+                "move_rate_ms": 80,
+                "p_scale": 0.08,
+                "interval_time_jump": 300
+              }
+            ],
+            "enemies_distance": [
+              {
+                "x": 1300,
+                "y": 407,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 0.08
+              },
+              {
+                "x": 1300,
+                "y": 207,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 2
+              },
+              {
+                "x": 1300,
+                "y": 640,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 2
+              },
+              {
+                "x": 1000,
+                "y": 600,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 0.08
+              },
+              {
+                "x": 1100,
+                "y": 500,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 0.08
+              },
+              {
+                "x": 1200,
+                "y": 600,
+                "gravity": 8,
+                "frame_rate_ms": 300,
+                "move_rate_ms": 80,
+                "p_scale": 0.08
+              }
+            ],
+            "fruit": [
+              {
+                "x": 630,
+                "y": 510,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              },
+              {
+                "x": 665,
+                "y": 510,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              },
+              {
+                "x": 695,
+                "y": 510,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              },
+              {
+                "x": 800,
+                "y": 570,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              },
+              {
+                "x": 900,
+                "y": 500,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              },
+              {
+                "x": 1100,
+                "y": 500,
+                "frame_rate_ms": 100,
+                "move_rate_ms": 50,
+                "p_scale": 1
+              }
+            ],
+            "trampa": [
+              {
+                "x": 900,
+                "y": 690,
+                "width": 50,
+                "height": 50
+              },
+              {
+                "x": 950,
+                "y": 690,
+                "width": 50,
+                "height": 50
+              },
+              {
+                "x": 1000,
+                "y": 690,
+                "width": 50,
+                "height": 50
+              },
+              {
+                "x": 1050,
+                "y": 690,
+                "width": 50,
+                "height": 50
+              }
+            ]
+          }
+          
+ 
+    ]
+
+
+
+}

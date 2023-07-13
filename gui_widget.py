@@ -3,8 +3,8 @@ from pygame.locals import *
 from constantes import *
 
 class Widget:
-    def __init__(self,master_form,x,y,w,h,color_background,color_border,image_background,text,font,font_size,font_color):
-        self.master_form = master_form
+    def __init__(self,master,x,y,w,h,color_background,color_border,image_background,text,font,font_size,font_color):
+        self.master = master
         self.x = x
         self.y = y
         self.w = w
@@ -29,8 +29,8 @@ class Widget:
         self.slave_rect.x = self.x
         self.slave_rect.y = self.y
         self.slave_rect_collide = pygame.Rect(self.slave_rect)
-        self.slave_rect_collide.x += self.master_form.x
-        self.slave_rect_collide.y += self.master_form.y
+        self.slave_rect_collide.x += self.master.x
+        self.slave_rect_collide.y += self.master.y
 
         if self.color_background:
             self.slave_surface.fill(self.color_background)
@@ -48,8 +48,8 @@ class Widget:
         if self.color_border:
             pygame.draw.rect(self.slave_surface, self.color_border, self.slave_surface.get_rect(), 2)
 
-    def update(self):
-        pass
+    def update(self,lista_eventos):
+        self.render()
 
     def draw(self):
-        self.master_form.surface.blit(self.slave_surface,self.slave_rect)
+        self.master.surface.blit(self.slave_surface,self.slave_rect)

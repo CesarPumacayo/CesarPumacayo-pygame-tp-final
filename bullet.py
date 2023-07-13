@@ -2,6 +2,7 @@ from player import *
 from constantes import *
 from auxiliar import Auxiliar
 import math
+from player import *
 
 class Bullet():
     #                                       ▼dirreccion de la bala
@@ -62,6 +63,9 @@ class Bullet():
                 if self.is_active and self.owner != aux_enemy and self.rect.colliderect(aux_enemy.rect):
                     print("IMPACTO ENEMY")
                     collided_enemy = aux_enemy
+                    player.score += 50
+                    print(player.score)
+
                     break
             
             if collided_enemy:
