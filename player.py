@@ -59,7 +59,17 @@ class Player:
 
 
         
-    def walk(self,direction):
+    def walk(self,direction)->None:
+        '''
+        Hace la animacion de caminar segun la dirrecion del player
+        ----------------
+        Parametros:
+        direction: La dirreccion que mira el jugador
+        self: orientado a objetos
+        ----------
+        Retorno:
+        No return: None
+        '''
         if(self.is_jump == False and self.is_fall == False):
             if(self.direction != direction or (self.animation != self.walk_r and self.animation != self.walk_l)):
                 self.frame = 0
@@ -72,6 +82,16 @@ class Player:
                     self.animation = self.walk_l
 
     def shoot(self,on_off = True):
+        '''
+        Hace la animacion del disparo segun la dirrecion del player y ademas comprueba varias condiciones para determinar si el jugador puede realizar el disparo
+        ----------------
+        Parametros:
+        on_off: bool, condicion si esta o no disparando
+        self: orientado a objetos
+        ----------
+        Retorno:
+        No return: None
+        '''
         self.is_shoot = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
 
@@ -84,13 +104,29 @@ class Player:
                     self.animation = self.stay_l       
 
     def receive_shoot(self):
+       '''
+       Recibe daño restandole 1 vida
+       -----------
+       Parametros
+       self: referencia a la instancia actual de la clase.
+       ---------
+       No retorna
+       '''
        self.lives -= 1
 
 
     def jump(self,platform_list, on_off=True):
+        '''
+        La funcion hace que el player salte y si esta en estado de caida, ademas de la dirrecion que este el player
+        --------------
+        Parametros
+        self: referencia a la instancia actual de la clase.
+        platform_list: estado, de si esta o no en una plataforma
+        -------------
+        No return
+        '''
         if on_off and self.is_jump == False and self.is_fall == False:
             self.y_start_jump = self.rect.y
-
 
             if(self.direction == DIRECTION_R):
                 self.move_x = int(self.move_x / 1.5)
@@ -110,6 +146,14 @@ class Player:
 
 
     def stay(self):
+        '''
+        Animacion de quieto comprueba las distintas condiciones que cumple o no la animacion
+        -------
+        Parametro:
+        self: referencia a la instancia actual de la clase.
+        -------
+        No retorna
+        '''
         if(self.is_shoot):
             return
 
@@ -123,16 +167,45 @@ class Player:
             self.frame = 0
 
     def change_x(self,delta_x):
+        '''
+        Cambios horizontal del player
+        --------
+        Parametros:
+        self: referencia a la instancia actual de la clase.
+        delta_x: incremento del rect.x dando movimiento horizontalmente de izquierda o derecha del jugador
+        '''
         self.rect.x += delta_x
         self.collition_rect.x += delta_x
         self.ground_collition_rect.x += delta_x
 
     def change_y(self,delta_y):
+        '''
+        Cambios vertical del player
+        -------
+        Parametros: 
+        self: referencia a la instancia actual de la clase.
+        delta_y: incremento del rect.y (rectangulo del jugador) dando movimiento verticalmente de izquierda o derecha del jugador
+        --------
+        No retorna
+        '''
         self.rect.y += delta_y
         self.collition_rect.y += delta_y
         self.ground_collition_rect.y += delta_y
 
     def do_movement(self, delta_ms, plataform_list):
+        '''
+        Movimiento del jugador
+        -------------
+        --------------
+
+        Parametros:
+        self: referencia a la instancia actual de la clase.
+        delta_ms: minisegundos 
+        plataform_list: list, lista de plataformas
+        -----------
+        Return:
+        No retorna
+        '''
         self.tiempo_transcurrido_move += delta_ms
         if self.tiempo_transcurrido_move >= self.move_rate_ms:
             self.tiempo_transcurrido_move = 0
@@ -168,7 +241,18 @@ class Player:
                     self.jump(plataform_list, False)
                 self.is_fall = False     
 
-    def is_on_plataform(self,plataform_list):
+    def is_on_plataform(self,plataform_list)->bool:
+        '''
+        Si el jugador esta en una plataforma o en el ground level
+        -----------
+        Parametros:
+        self: referencia a la instancia actual de la clase.
+        plataform_list: list, lista de plataformas
+        ----------
+        Retorno:
+        retorno: bool 
+
+        '''
         retorno = False
         
         if(self.ground_collition_rect.bottom >= GROUND_LEVEL):
@@ -184,6 +268,14 @@ class Player:
     
 
     def do_animation(self,delta_ms):
+        '''
+        Velocidad de fotogramas
+        -----------
+        Parametros: 
+        self: referencia a la instancia actual de la clase.
+        delta_ms: Tiempo transcurrido desde la última actualización
+        
+        '''
         self.tiempo_transcurrido_animation += delta_ms
         if(self.tiempo_transcurrido_animation >= self.frame_rate_ms):
             self.tiempo_transcurrido_animation = 0
@@ -194,6 +286,16 @@ class Player:
                 self.frame = 0
  
     def update(self,delta_ms,plataform_list):
+        '''
+        Actualiza el estado del jugador
+        -----------------
+        Parametros:
+            delta_ms (float): Tiempo transcurrido desde la última actualización en milisegundos.
+            platform_list (list): Lista de plataformas con las que el jugador puede interactuar.
+        -----------------
+        Retorno:
+        No hay valor de retorno.
+        '''
         
         self.do_movement(delta_ms,plataform_list)
         self.do_animation(delta_ms)
@@ -205,7 +307,16 @@ class Player:
         
     
     def draw(self,screen):
+        '''
+        Dibuja al jugador en la pantalla.
+        ----------------
+        Parametros:
+            screen (pygame.Surface): Superficie de la pantalla donde se dibujará el jugador.
+        ---------------
+        Retorno:
+        No hay valor de retorno.
         
+        '''
         if(DEBUG):
             pygame.draw.rect(screen,color=(255,0 ,0),rect=self.collition_rect)
             pygame.draw.rect(screen,color=(255,255,0),rect=self.ground_collition_rect)
@@ -217,7 +328,18 @@ class Player:
         screen.blit(self.imagen, self.rect)
         
 
-    def events(self, delta_ms, keys):
+    def events(self, delta_ms, keys)->None:
+        '''
+        Maneja los eventos relacionados con el jugador.
+        ---------------
+        Parámetros:
+            delta_ms (float): Tiempo transcurrido desde la última actualización en milisegundos.
+            keys (dict): Diccionario que indica qué teclas están presionadas.
+        ----------------
+        Retorno:
+
+        No hay valor de retorno.
+        '''
         self.tiempo_transcurrido += delta_ms
 
         if keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:

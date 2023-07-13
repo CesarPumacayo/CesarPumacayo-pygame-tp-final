@@ -32,8 +32,3 @@ M_BRIGHT_CLICK = (32,32,32)
 
 
 
-#Compañero
-SIENNA = (160, 82, 45)
-IDLE = 'idle'
-COLLECTED = 'collected'
-

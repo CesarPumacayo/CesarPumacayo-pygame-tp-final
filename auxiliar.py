@@ -7,7 +7,11 @@ class Auxiliar():
     def getSurfaceFromSpriteSheet(path, columnas, filas, flip=False, step=1, scale=1, w=0, h=0):
         '''
         Toma una imagen y lo recorta segun las columnas y filas, y como resultado da imagenes con igual alturo y ancho
-        Parametro
+        -------------
+        Parametros:
+        
+        --------
+
         ''' 
         lista = []
         surface_imagen = pygame.image.load(path)
