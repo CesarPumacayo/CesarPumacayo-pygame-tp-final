@@ -5,6 +5,10 @@ import json
 class Auxiliar():
     @staticmethod
     def getSurfaceFromSpriteSheet(path, columnas, filas, flip=False, step=1, scale=1, w=0, h=0):
+        '''
+        Toma una imagen y lo recorta segun las columnas y filas, y como resultado da imagenes con igual alturo y ancho
+        Parametro
+        ''' 
         lista = []
         surface_imagen = pygame.image.load(path)
         fotograma_ancho = int(surface_imagen.get_width() / columnas)

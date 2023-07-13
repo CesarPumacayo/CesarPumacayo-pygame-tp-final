@@ -279,11 +279,6 @@ class FormGameLevel1(Form):
         for trampas in self.tramp_list:
             trampas.update(delta_ms, self.player_1.rect)
 
-        # self.player_1.update(delta_ms, self.platform_list)
-
-        # self.player_1.events(delta_ms, keys)
-
-
         self.enemies_list_distance = [enemy for enemy in self.enemies_list_distance if not enemy.is_removed]
 
 
@@ -315,6 +310,7 @@ class FormGameLevel1(Form):
 
         for trampas in self.tramp_list:
             trampas.draw(self.surface)
+
         self.player_1.draw(self.surface)
         
         for fruit_element in self.fruit_list:

@@ -55,33 +55,9 @@ class Player:
         self.tiempo_last_jump = 0 # en base al tiempo transcurrido general
         self.interval_time_jump = interval_time_jump
 
-        #-----------
-        self.tiempo_objetivo = 500
-        #-----------
-        
-        self.tiempo_inicial = pygame.time.get_ticks()
-
         self.collided_enemies = []  # Lista para almacenar los enemigos con los que ha colisionado
 
 
-    def timer(self, tiempo_obj):
-            if self.atk_stance_flag == False:
-                self.tiempo_trans = pygame.time.get_ticks()
-                self.atk_stance_flag = True
-            tiempo_actual = pygame.time.get_ticks()
-            if tiempo_actual - self.tiempo_trans >= tiempo_obj:
-                return True
-            else:
-                return False
-            
-
-    def calculate_delta_time(self,tiempo_objetivo):
-        tiempo_actual = pygame.time.get_ticks()
-        tiempo_transcurrido = tiempo_actual - self.tiempo_inicial
-        if tiempo_transcurrido >= tiempo_objetivo:
-            return True
-        else:
-            return False
         
     def walk(self,direction):
         if(self.is_jump == False and self.is_fall == False):
@@ -233,9 +209,7 @@ class Player:
         if(DEBUG):
             pygame.draw.rect(screen,color=(255,0 ,0),rect=self.collition_rect)
             pygame.draw.rect(screen,color=(255,255,0),rect=self.ground_collition_rect)
-        
-        # self.image = self.animation[self.frame]
-        # screen.blit(self.image,self.rect)
+    
         try:
             self.imagen = self.animation[self.frame]
         except IndexError:
@@ -274,19 +248,4 @@ class Player:
         
         if not keys[pygame.K_s]:
             self.is_shooting = False
-
-    #NUEVO!
-    def colllide_enemy(self, enemy_list):
-        collision_detected = False  # Bandera para indicar si se detectó una colisión con algún enemigo   
-        for enemy in enemy_list:
-            if self.rect.colliderect(enemy.rect):
-                collision_detected = True
-                break  # Si hay una colisión, no es necesario verificar los otros enemigos
-        if collision_detected:
-            if not self.colliding_enemy_flag:  # Verifica si ya estás colisionando con un enemigo
-                self.be_hurted()
-                self.discount_live()
-                self.colliding_enemy_flag = True  # Establece la bandera para indicar que estás colisionando con un enemigo
-        else:
-            self.colliding_enemy_flag = False
 
